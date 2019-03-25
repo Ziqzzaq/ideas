@@ -3,7 +3,7 @@ import {IdeaService} from "../services/idea.service";
 import {IdeaDto} from "../models/idea.dto";
 import {ValidationPipe} from "../../shared/validation.pipe";
 
-@Controller('idea')
+@Controller('api/idea')
 export class IdeaController {
     private logger = new Logger('IdeaController');
 

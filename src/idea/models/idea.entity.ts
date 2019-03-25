@@ -2,11 +2,15 @@ import {Column, CreateDateColumn, Entity, PrimaryGeneratedColumn} from 'typeorm'
 
 @Entity()
 export class IdeaEntity {
-    @PrimaryGeneratedColumn('uuid') id: string;
+    @PrimaryGeneratedColumn('uuid')
+    id: string;
 
-    @CreateDateColumn() created: Date;
+    @CreateDateColumn()
+    created: Date;
 
-    @Column('text') idea: string;
+    @Column('text')
+    idea: string;
 
-    @Column('text') description: string;
+    @Column('text')
+    description: string;
 }
