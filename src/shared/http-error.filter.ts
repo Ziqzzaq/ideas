@@ -18,14 +18,18 @@ export class HttpErrorFilter implements ExceptionFilter {
             timestamp: new Date().toLocaleString(),
             path: request.url,
             method: request.method,
-            message: exception.message.error || exception.message || null
+            message: (status !== HttpStatus.INTERNAL_SERVER_ERROR) ? (exception.message.error || exception.message || null) : 'Internal server error'
         };
+
+        if (status === HttpStatus.INTERNAL_SERVER_ERROR) {
+            console.error(exception);
+        }
 
         Logger.error(
             `${request.method} ${request.url}`,
             JSON.stringify(errorResponse),
             'ExceptionFilter'
-        )
+        );
 
         response.status(status).json(errorResponse);
     }

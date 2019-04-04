@@ -16,8 +16,8 @@ export class UserService {
 
 
     public async showAllUser(): Promise<UserRo[]> {
-        const user = await this.userRepository.find()
-        return user.map(user => user.toResponseObject(true))
+        const user = await this.userRepository.find({relations: ['ideas']});
+        return user.map(user => user.toResponseObject(true));
     }
 
     public async login(data: UserDto): Promise<UserRo> {
